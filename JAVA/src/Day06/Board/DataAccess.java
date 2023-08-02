@@ -74,7 +74,7 @@ public class DataAccess extends JDBConnection{
 	public int insert(Board board) {
 		int result = 0;
 		
-		String sql = " INSERT INTO board( title, writer, content ) "+ " VALUES ( ?, ?, ? )";		//<--띄어쓰기 주의!!!
+		String sql = " INSERT INTO board ( title, writer, content ) "+ " VALUES ( ?, ?, ? )";		//<--띄어쓰기 주의!!!
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, board.getTitle());		//<--제목 매핑
@@ -82,8 +82,8 @@ public class DataAccess extends JDBConnection{
 			psmt.setString(3, board.getContent());		//<--내용 매핑
 			
 			result = psmt.executeUpdate();				// SQL 실행 요청, 적용된 데이터 개수를 받아옴			조회 시엔 executeQuery, 수정 시엔 executeUpdate
-														//게시글 1개 쓰기 성공시, result : 1
-														//				실패 시, result : 0
+																	//게시글 1개 쓰기 성공시, result : 1
+																	//				실패 시, result : 0
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
