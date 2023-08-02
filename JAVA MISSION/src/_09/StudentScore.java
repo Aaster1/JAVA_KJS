@@ -1,6 +1,5 @@
 package _09;
 
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class StudentScore {
@@ -496,18 +495,21 @@ public class StudentScore {
 		// 과목별 반 등수 계산 (끝)
 		
 		
+		
+//		인덱스 에러. 10을 넘아가는 i or j , k , l 이있음
+		
 		// 전교 등수 계산
 		for (int i = 0; i < classStudentData[classNo-1].length; i++) {
 			int cnt =1;
 			for (int j = 0; j < classStudentData[classNo-1][i].length; j++) {
 				for (int k = 0; k < classStudentData.length; k++) {
 					for (int l = 0; l < classStudentData[k].length; l++) {
-						if(classStudentData[i][j][0]<classStudentData[k][l][0]) {
+						if(classStudentData[classNo-1][j][0]<classStudentData[k][l][0]) {
 							cnt+=1;
 					}
 				}
 				}
-				classStudentRank[i][j][1]= cnt;
+				classStudentRank[classNo-1][j][1]= cnt;
 			}
 		}
 		// 전교생 :  
