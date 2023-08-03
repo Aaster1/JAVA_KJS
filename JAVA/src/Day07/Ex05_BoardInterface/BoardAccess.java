@@ -21,7 +21,7 @@ public class BoardAccess extends JDBConnection implements DataService{
 				
 //				결과 데이터 가져오기
 //				rs.getXXX("컬럼명") --> 해당 컬럼의 데이터를 가져온다.
-				board.setBoardNo(rs.getInt("board_no"));
+				board.setNo(rs.getInt("board_no"));
 				board.setTitle(rs.getString("title"));
 				board.setWriter(rs.getString("writer"));
 				board.setContent(rs.getString("content"));
@@ -54,7 +54,7 @@ public class BoardAccess extends JDBConnection implements DataService{
 			
 //			조회 결과 가져오기
 			if(rs.next()) {
-				board.setBoardNo(rs.getInt("board_No"));
+				board.setNo(rs.getInt("board_No"));
 				board.setTitle(rs.getString("title"));
 				board.setWriter(rs.getString("writer"));
 				board.setContent(rs.getString("content"));
@@ -104,7 +104,7 @@ public class BoardAccess extends JDBConnection implements DataService{
 			psmt.setString(1, board.getTitle());;
 			psmt.setString(2, board.getWriter());		
 			psmt.setString(3, board.getContent());
-			psmt.setInt(4, board.getBoardNo());
+			psmt.setInt(4, board.getNo());
 			
 			result = psmt.executeUpdate();
 			
@@ -140,5 +140,10 @@ public class BoardAccess extends JDBConnection implements DataService{
 		}
 		
 		return result;
+	}
+
+	@Override
+	public Text[] selectList(int boardNo) {
+		return null;
 	}
 }

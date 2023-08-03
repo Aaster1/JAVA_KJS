@@ -3,8 +3,8 @@ package Day07.Ex05_BoardInterface;
 
 public class Comment extends Text{
 	
-	private int commnetNo;
-	
+	private int commentNo;
+	private int boardNo;
 	public Comment() {
 		this("글쓴이없음", "내용없음");
 	}
@@ -13,12 +13,22 @@ public class Comment extends Text{
 		super(writer, content);
 	}
 
-	public int getCommnetNo() {
-		return commnetNo;
+	public int getCommentNo() {
+		return commentNo;
 	}
 
-	public void setCommnetNo(int commnetNo) {
-		this.commnetNo = commnetNo;
+	public void setCommentNo(int commnetNo) {
+		this.commentNo = commnetNo;
+		setNo(commentNo);
+	}
+
+	public int getBoardNo() {
+		return boardNo;
+	}
+
+	public void setBoardNo(int boardNo) {
+		this.boardNo = boardNo;
+		
 	}
 
 

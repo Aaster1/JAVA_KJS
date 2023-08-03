@@ -21,7 +21,9 @@ public class Board extends Text{
 
 	public void setBoardNo(int boardNo) {
 		this.boardNo = boardNo;
+		setNo(boardNo);
 	}
+	
 
 //	toString
 //	: 객체를 출력할 때, 지정한 문자열 형식으로 반환하는 메소드

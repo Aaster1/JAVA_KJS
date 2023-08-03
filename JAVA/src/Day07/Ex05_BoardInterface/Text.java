@@ -5,7 +5,6 @@ import java.util.Date;
 public class Text {
 	
 	private int No;
-	private int boardNo;
 	private String title;
 	private String writer;
 	private String content;
@@ -39,13 +38,6 @@ public class Text {
 		No = no;
 	}
 
-	public int getBoardNo() {
-		return boardNo;
-	}
-
-	public void setBoardNo(int boardNo) {
-		this.boardNo = boardNo;
-	}
 
 	public String getTitle() {
 		return title;
