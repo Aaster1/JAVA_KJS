@@ -1,14 +1,14 @@
 package Aster.leveling.Dun;
 
-public class PlayerEnermyStateData {
+public class EnermyStateData {
 	public String NAME;
 	public int HP,MAXHP,MP,MAXMP,LEVEL,EXP,NEXTEXP,STR,AGI,INT,LUCK,ATK,MATK,DEF,MDEF,POINT;
-		public PlayerEnermyStateData() {
+		public EnermyStateData() {
 			this("Unknown",100,100,80,80,0,10,5,5,5,5,0,0,0,0,0);
 		}
 	
 	
-		public PlayerEnermyStateData(String nAME, int hP, int mAXHP, int mP, int mAXMP, int eXP, int nEXTEXP, int sTR, int aGI, int iNT,
+		public EnermyStateData(String nAME, int hP, int mAXHP, int mP, int mAXMP, int eXP, int nEXTEXP, int sTR, int aGI, int iNT,
 				int lUCK, int aTK, int mATK, int dEF, int mDEF,int pOINT) {
 			NAME = nAME;
 			HP = hP;
@@ -28,7 +28,7 @@ public class PlayerEnermyStateData {
 			POINT = pOINT;
 		}
 		
-	public PlayerEnermyStateData(String nAME, int hP, int mAXHP, int mP, int mAXMP,int lEVEL, int eXP, int nEXTEXP, int sTR, int aGI, int iNT,
+	public EnermyStateData(String nAME, int hP, int mAXHP, int mP, int mAXMP,int lEVEL, int eXP, int nEXTEXP, int sTR, int aGI, int iNT,
 			int lUCK,int pOINT) {
 		NAME = nAME;
 		HP = hP;
@@ -44,7 +44,7 @@ public class PlayerEnermyStateData {
 		POINT = pOINT;
 	}
 	
-	public PlayerEnermyStateData(String nAME, int hP,int eXP,int aTK, int mATK, int dEF, int mDEF) {
+	public EnermyStateData(String nAME, int hP,int eXP,int aTK, int mATK, int dEF, int mDEF) {
 		NAME = nAME;
 		HP = hP;
 		EXP = eXP;

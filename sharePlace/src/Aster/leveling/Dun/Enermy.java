@@ -1,6 +1,6 @@
 package Aster.leveling.Dun;
 
-public class Enermy extends PlayerEnermyStateData{
+public class Enermy extends PlayerStateData{
 	
 	public Enermy() {
 		this("",0,0,0,0,0,0);

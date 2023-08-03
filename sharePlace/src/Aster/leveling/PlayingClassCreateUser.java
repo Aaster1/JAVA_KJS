@@ -2,14 +2,14 @@ package Aster.leveling;
 
 import java.util.Scanner;
 
-import Aster.leveling.Dun.PlayerEnermyStateData;
+import Aster.leveling.Dun.PlayerStateData;
 
-public class PlayingClassCreateUser implements Playing{
+public class PlayingClassCreateUser extends PlayingClass{
 
 	
 	@Override
 	public void createUser() {
-		PlayerEnermyStateData state = new PlayerEnermyStateData("Unknown",100,100,80,80,1,0,10,5,5,5,5,0);
+		PlayerStateData state = new PlayerStateData("Unknown",100,100,80,80,1,0,10,5,5,5,5,0);
 		Scanner sc = new Scanner(System.in);
 		boolean on = true;
 		System.out.println();
@@ -31,6 +31,8 @@ public class PlayingClassCreateUser implements Playing{
 			System.out.println();
 			System.out.println("Stat Point : "+state.POINT);
 			System.out.println();
+			System.out.println("================\t기본 능력치\t========================================================================================");
+			System.out.println();
 			System.out.println("주사위를 던집니까? Y/N");
 			String answer = sc.next().toUpperCase();
 			System.out.println();
@@ -41,19 +43,33 @@ public class PlayingClassCreateUser implements Playing{
 				System.out.println("================\t주사위결과\t========================================================================================");
 				diceTotal = dice1+dice2;
 				System.out.println();
-				System.out.println("DICE 1 : DICE2");
-				System.out.println(" "+dice1+" : "+dice2+" ");
+				System.out.println("\tDICE 1 : DICE2");
+				System.out.println("\t "+dice1+" : "+dice2+" ");
 				System.out.println();
-				System.out.println("");
-
+				System.out.println("\t주사위 총합 : "+diceTotal);
+				System.out.println();
+				System.out.println("Stat Point - 『"+diceTotal+"』점이 주어집니다.");
 				state.POINT = diceTotal;
-				
-				
 				continue;
-			}else if(answer.equals("N")) {
+
 				
+				
+			}else if(answer.equals("N")) {
+				 System.out.println();
+				 System.out.println("==============================================================================================================================");
+				 System.out.println();
+				 System.out.println("캐릭터 생성을 완료하시겠습니까?");
+				 answer = sc.next().toUpperCase();
+				 if(answer.equals("Y")) {
+					 System.out.println();
+					 System.out.println("==============================================================================================================================");
+					 System.out.println("캐릭터 생성을 완료합니다.");
+					 System.out.println("==============================================================================================================================");
+					 
+				 }
 			}else {
 				System.out.println("잘못된 입력입니다.");
+				continue;
 			}
 			
 			
@@ -63,15 +79,6 @@ public class PlayingClassCreateUser implements Playing{
 		sc.close();
 	}
 
-	@Override
-	public void playing() {
-		
-	}
-
-	@Override
-	public void endScore() {
-		
-	}
 
 		
 }
