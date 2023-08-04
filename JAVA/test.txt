@@ -1,0 +1,10 @@
+		텍스트 파일 인풋 테스트
+		TEXT FILE INPUT TEST
+		NAME	:	Unknown
+		LEVEL	:	13
+		EXP		:	12
+		NEXTEXP	:	20
+		STR		:	7
+		AGI		:	7
+		INT		:	7
+		LUCK	:	7

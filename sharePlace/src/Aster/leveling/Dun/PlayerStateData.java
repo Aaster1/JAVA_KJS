@@ -6,17 +6,18 @@ public class PlayerStateData {
 	public String NAME;
 	public int HP,MAXHP,MP,MAXMP,LEVEL,EXP,NEXTEXP,STR,AGI,INT,LUCK,ATK,MATK,DEF,MDEF,POINT;
 		public PlayerStateData() {
-			this("Unknown",100,100,80,80,0,10,5,5,5,5,0,0,0,0,0);
+			this("Unknown",100,100,80,80,1,0,10,5,5,5,5,0,0,0,0,0);
 		}
 	
 	
-		public PlayerStateData(String nAME, int hP, int mAXHP, int mP, int mAXMP, int eXP, int nEXTEXP, int sTR, int aGI, int iNT,
+		public PlayerStateData(String nAME, int hP, int mAXHP, int mP, int mAXMP,int lEVEL, int eXP, int nEXTEXP, int sTR, int aGI, int iNT,
 				int lUCK, int aTK, int mATK, int dEF, int mDEF,int pOINT) {
 			NAME = nAME;
 			HP = hP;
 			MAXHP = mAXHP;
 			MP = mP;
 			MAXMP = mAXMP;
+			LEVEL = lEVEL;
 			EXP = eXP;
 			NEXTEXP = nEXTEXP;
 			STR = sTR;
