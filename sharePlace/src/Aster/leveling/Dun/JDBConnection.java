@@ -24,7 +24,6 @@ public class JDBConnection {
 			
 			con = DriverManager.getConnection(url,id,pw);
 			
-			System.out.println("DB 연결 성공");
 			
 			
 		} catch (Exception e) {

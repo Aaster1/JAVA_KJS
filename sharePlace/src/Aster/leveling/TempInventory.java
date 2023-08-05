@@ -132,7 +132,6 @@ public class TempInventory extends JDBConnection{
 					
 				
 				
-				System.out.println(name+"을 소모했습니다.");
 				if(tempQtt<=1) {
 //				조회 결과 가져오기
 					
@@ -170,6 +169,7 @@ public class TempInventory extends JDBConnection{
 						
 					}
 				}
+				System.out.println(name+"을 소모했습니다.");
 			} catch (SQLException e) {
 				System.err.println("아이템 사용에 실패하였습니다.");
 				e.printStackTrace();
@@ -256,11 +256,23 @@ public class TempInventory extends JDBConnection{
 			psmt.setString(1, name);				//<--?(1) <--스위치 문으로 전환된 매개변수<아이템 이름>)
 			rs = psmt.executeQuery();					//쿼리 실행
 			if(rs.next()) {
+				int tempQtt = rs.getInt("quantity");
+				String sqlU = " UPDATE esd.inven" + " SET quantity= ? " +  " WHERE name = ? ";
 				
-//				 찾지를 못했는데 읽어오려니 진행이 안됨. 아마 rsnext자체에서 멈추는 모양. 이 부분부터 수정
-			int tempQtt = rs.getInt("quantity");
-			System.out.println(tempQtt);
-			if(tempQtt<1) {
+//			- now() : 현재 날짜 / 시간을 반환하는 MySQL 함수
+				
+				try {
+					psmt=con.prepareStatement(sqlU);
+					psmt.setInt(1, (tempQtt+1));;
+					psmt.setString(2, name);		
+					
+					psmt.executeUpdate();
+					
+				} catch (SQLException e) {
+					System.err.println("수량 증가 시, 에러 발생 (getItem");
+					e.printStackTrace();
+			}
+			}else{	
 			String sqlC = " INSERT INTO esd.inven( name, quantity ) "+ " VALUES ( ?, ? )";		//<--띄어쓰기 주의!!!
 			try {
 				psmt = con.prepareStatement(sqlC);
@@ -276,48 +288,19 @@ public class TempInventory extends JDBConnection{
 				System.err.println("아이템 생성 시, 에러 발생(getItem)");
 				a.printStackTrace();
 			}
+			
+			
 			}
-			String sqlU = " UPDATE esd.inven" + " SET quantity= ? " +  " WHERE name = ? ";
-			
-//			- now() : 현재 날짜 / 시간을 반환하는 MySQL 함수
-			
-			try {
-				psmt=con.prepareStatement(sqlU);
-				psmt.setInt(1, (tempQtt+1));;
-				psmt.setString(2, name);		
-				
-				psmt.executeUpdate();
-				
-			} catch (SQLException e) {
-				System.err.println("수량 증가 시, 에러 발생 (getItem");
-				e.printStackTrace();
-			}
-			
 			
 //			조회 결과 가져오기
-			}
-		} catch (SQLException e) {
 			
-			String sqlC = " INSERT INTO esd.inven( name, quantity ) "+ " VALUES ( ?, ? )";		//<--띄어쓰기 주의!!!
-			try {
-				psmt = con.prepareStatement(sqlC);
-				psmt.setString(1, name);		//<--이름 매핑
-				psmt.setInt(2, 1);		//<--수량 매핑
-				
-				psmt.executeUpdate();				// SQL 실행 요청, 적용된 데이터 개수를 받아옴			조회 시엔 executeQuery, 수정 시엔 executeUpdate
-															//게시글 1개 쓰기 성공시, result : 1
-															//				실패 시, result : 0
-															//여기선 미사용
-				
-			} catch (SQLException a) {
-				System.err.println("아이템 생성 시, 에러 발생(getItem)");
-				a.printStackTrace();
-			}
+		} catch (SQLException e) {
+			System.err.println("아이템 생성 시, 에러 발생(getItem)");
 			e.printStackTrace();
-		}
+				
 		
 }
-
+	}
 	
 	public TempInventory(String nAME, int no, int qtt) {
 		NAME = nAME;
