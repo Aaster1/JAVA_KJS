@@ -1,7 +1,7 @@
 package Aster.leveling.Dun;
 
 public interface EventAction {
-	void enermyState();
-	void enermyBooty();
+	public void enermyState();
+	public void enermyBooty();
 	
 }

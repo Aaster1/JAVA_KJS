@@ -8,11 +8,10 @@ public class Stauts extends PlayingActionClass{
 	PlayerStateData state = new PlayerStateData();
 
 	@Override
-	void status() {
+	public void status() {
 		boolean on = true;
 		Scanner sc = new Scanner(System.in);
 		do {
-			
 		System.out.println("================\t기본 능력치\t=====================================================================================================");
 		System.out.println("\t이름 : "+state.NAME);
 		System.out.println();

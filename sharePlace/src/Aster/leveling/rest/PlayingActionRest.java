@@ -1,12 +1,14 @@
-package Aster.leveling;
+package Aster.leveling.rest;
 
 import java.util.Scanner;
 
+import Aster.leveling.PlayingActionClass;
 import Aster.leveling.Dun.PlayerStateData;
 
 public class PlayingActionRest extends PlayingActionClass{
 
-	void rest() {
+	@Override
+	public void rest() {
 		Scanner sc = new Scanner(System.in);
 		PlayerStateData state = new PlayerStateData();
 		boolean on = true;
@@ -22,6 +24,17 @@ public class PlayingActionRest extends PlayingActionClass{
 		if(answer ==1) {
 			
 		}else if(answer ==2){
+			System.out.println();
+			System.out.println("================\t잠자기\t=====================================================================================================");
+			System.out.println();
+			System.out.println("\t잠자리에 듭니다 ");
+			System.out.println();
+			state.HP=state.MAXHP;
+			state.MP=state.MAXMP;
+			System.out.println("\tHP/MP 전회복\t||\t DAY +1");
+			System.out.println();
+			System.out.println("===================================================================================================================================");
+			System.out.println();
 			
 		}else if(answer ==3){
 			state.training();

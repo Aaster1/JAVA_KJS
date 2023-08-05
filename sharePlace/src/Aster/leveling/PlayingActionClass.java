@@ -4,19 +4,19 @@ public class PlayingActionClass extends PlayingClass{
 
 	
 	
-	void rest() {
+	public void rest() {
 		rest();
-	};
+	}
 	
-	void  status() {
+	public void  status() {
 		status();
 	}
 	
-	void inDungeon() {
+	public void inDungeon() {
 		
 	}
 	
-	void randGetItem() {
+	public void randGetItem() {
 		
 	}
 	
