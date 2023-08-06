@@ -25,12 +25,12 @@ public class TempInventory extends JDBConnection{
 			boolean tempPotion3 = false;
 			tempPotion1=useItem(1);
 			if(tempPotion1==false) {
-				getItem(1);
+				notCreateGetItem(1);
 				break;
 			}
 			tempPotion3=useItem(3);
 			if(tempPotion1==false) {
-				getItem(3);
+				notCreateGetItem(3);
 				break;
 			}
 			if(tempPotion1&&tempPotion3){
@@ -49,12 +49,12 @@ public class TempInventory extends JDBConnection{
 			boolean tempPotion8 = false;
 			tempPotion4=useItem(4);
 			if(tempPotion4==false) {
-				getItem(4);
+				notCreateGetItem(4);
 				break;
 			}
 			tempPotion8=useItem(8);
 			if(tempPotion8==false) {
-				getItem(8);
+				notCreateGetItem(8);
 				break;
 			}
 			if(tempPotion4&&tempPotion8){
@@ -72,12 +72,12 @@ public class TempInventory extends JDBConnection{
 			boolean tempPotion5 = false;
 			tempPotion2=useItem(2);
 			if(tempPotion2==false) {
-				getItem(2);
+				notCreateGetItem(2);
 				break;
 			}
 			tempPotion5=useItem(5);
 			if(tempPotion5==false) {
-				getItem(5);
+				notCreateGetItem(5);
 				break;
 			}
 			if(tempPotion2&&tempPotion5){
@@ -95,12 +95,12 @@ public class TempInventory extends JDBConnection{
 			boolean tempPotion7 = false;
 			tempPotion6=useItem(6);
 			if(tempPotion6==false) {
-				getItem(6);
+				notCreateGetItem(6);
 				break;
 			}
 			tempPotion7=useItem(7);
 			if(tempPotion7==false) {
-				getItem(7);
+				notCreateGetItem(7);
 				break;
 			}
 			if(tempPotion6&&tempPotion7){
@@ -118,12 +118,12 @@ public class TempInventory extends JDBConnection{
 			boolean tempPotion11 = false;
 			tempPotion9=useItem(9);
 			if(tempPotion9==false) {
-				getItem(9);
+				notCreateGetItem(9);
 				break;
 			}
 			tempPotion11=useItem(11);
 			if(tempPotion11==false) {
-				getItem(11);
+				notCreateGetItem(11);
 				break;
 			}
 			if(tempPotion9&&tempPotion11){
@@ -141,12 +141,12 @@ public class TempInventory extends JDBConnection{
 			boolean tempPotion15 = false;
 			tempPotion10=useItem(10);
 			if(tempPotion10==false) {
-				getItem(10);
+				notCreateGetItem(10);
 				break;
 			}
 			tempPotion15=useItem(15);
 			if(tempPotion15==false) {
-				getItem(15);
+				notCreateGetItem(15);
 				break;
 			}
 			if(tempPotion10&&tempPotion15){
@@ -165,12 +165,12 @@ public class TempInventory extends JDBConnection{
 			boolean tempPotion17 = false;
 			tempPotion12=useItem(12);
 			if(tempPotion12==false) {
-				getItem(12);
+				notCreateGetItem(12);
 				break;
 			}
 			tempPotion17=useItem(17);
 			if(tempPotion17==false) {
-				getItem(17);
+				notCreateGetItem(17);
 				break;
 			}
 			if(tempPotion12&&tempPotion17){
@@ -188,12 +188,12 @@ public class TempInventory extends JDBConnection{
 			boolean tempPotion14 = false;
 			tempPotion13=useItem(13);
 			if(tempPotion13==false) {
-				getItem(13);
+				notCreateGetItem(13);
 				break;
 			}
 			tempPotion14=useItem(14);
 			if(tempPotion14==false) {
-				getItem(14);
+				notCreateGetItem(14);
 				break;
 			}
 			if(tempPotion13&&tempPotion14){
@@ -211,12 +211,12 @@ public class TempInventory extends JDBConnection{
 			boolean tempPotion18 = false;
 			tempPotion16=useItem(16);
 			if(tempPotion16==false) {
-				getItem(16);
+				notCreateGetItem(16);
 				break;
 			}
 			tempPotion18=useItem(18);
 			if(tempPotion18==false) {
-				getItem(18);
+				notCreateGetItem(18);
 				break;
 			}
 			if(tempPotion16&&tempPotion18){
@@ -235,17 +235,17 @@ public class TempInventory extends JDBConnection{
 			boolean tempPotion43 = false;
 			tempPotion41=useItem(19);
 			if(tempPotion41==false) {
-				getItem(19);
+				notCreateGetItem(19);
 				break;
 			}
 			tempPotion42=useItem(19);
 			if(tempPotion42==false) {
-				getItem(19);
+				notCreateGetItem(19);
 				break;
 			}
 			tempPotion43=useItem(19);
 			if(tempPotion43==false) {
-				getItem(19);
+				notCreateGetItem(19);
 				break;
 			}
 			if(tempPotion41&&tempPotion42&&tempPotion43){
@@ -263,12 +263,12 @@ public class TempInventory extends JDBConnection{
 			boolean tempPotion21 = false;
 			tempPotion19=useItem(19);
 			if(tempPotion19==false) {
-				getItem(19);
+				notCreateGetItem(19);
 				break;
 			}
 			tempPotion21=useItem(21);
 			if(tempPotion21==false) {
-				getItem(21);
+				notCreateGetItem(21);
 				break;
 			}
 			if(tempPotion19&&tempPotion21){
@@ -286,12 +286,12 @@ public class TempInventory extends JDBConnection{
 			boolean tempPotion22 = false;
 			tempPotion20=useItem(20);
 			if(tempPotion20==false) {
-				getItem(20);
+				notCreateGetItem(20);
 				break;
 			}
 			tempPotion22=useItem(22);
 			if(tempPotion22==false) {
-				getItem(22);
+				notCreateGetItem(22);
 				break;
 			}
 			if(tempPotion20&&tempPotion22){
@@ -664,6 +664,148 @@ public class TempInventory extends JDBConnection{
 			
 		} catch (SQLException e) {
 			System.err.println("아이템 생성 시, 에러 발생(getItem)");
+			e.printStackTrace();
+				
+		
+}
+		return name;
+	}
+	
+	public String notCreateGetItem(int tempInt){
+		String name="";
+		switch (tempInt) {
+		case 1:
+			name="슬라임점액";
+			break;
+		case 2:
+			name="찢어진 천조각";
+			break;
+		case 3:
+			name="만질 수 없는 헝겊";
+			break;
+		case 4:
+			name="부식된 뼈";
+			break;
+		case 5:
+			name="악취 나는 살점";
+			break;
+		case 6:
+			name="따듯한 털가죽";
+			break;
+		case 7:
+			name="리자드맨의 비늘";
+			break;
+		case 8:
+			name="섬뜩한손뼈";
+			break;
+		case 9:
+			name="흉흉한 두개골";
+			break;
+		case 10:
+			name="장식용 글레이브";
+			break;
+		case 11:
+			name="오우거의 뿔";
+			break;
+		case 12:
+			name="뱀파이어의 로브";
+			break;
+		case 13:
+			name="골렘의 코어";
+			break;
+		case 14:
+			name="빛나는 생명의 베슬";
+			break;
+		case 15:
+			name="이형의 이빨";
+			break;
+		case 16:
+			name="위대한 뿔";
+			break;
+		case 17:
+			name="지배자의 왕관";
+			break;
+		case 18:
+			name="태양에 그을린 날개깃";
+			break;
+		case 19:
+			name="용의 심장";
+			break;
+		case 20:
+			name="고대의 비문";
+			break;
+		case 21:
+			name="세계의 심장";
+			break;
+		case 22:
+			name="마왕의 옥쇄";
+			break;
+		case 23:
+			name="슬라임 포션";
+			break;
+		case 24:
+			name="잔혹한 냉기";
+			break;
+		case 25:
+			name="프로틴 2007";
+			break;
+		case 26:
+			name="바람의 가호";
+			break;
+		case 27:
+			name="수호자의 증언";
+			break;
+		case 28:
+			name="투사의 유언";
+			break;
+		case 29:
+			name="검붉은 은총";
+			break;
+		case 30:
+			name="마공학 핵";
+			break;
+		case 31:
+			name="창공의 수혜";
+			break;
+		case 32:
+			name="가공된 용의 심장";
+			break;
+		case 33:
+			name="용의 정수";
+			break;
+		case 34:
+			name="절대자의 재림";
+			break;
+		}
+		String sql = " SELECT * " + " FROM esd.inven"+" WHERE name = ? AND quantity>=1";
+		
+		
+		try {
+			psmt = con.prepareStatement(sql);		//<--쿼리 실행 객체 생성
+//		psmt.setXXX(순서번호, 매핑할 값);
+			psmt.setString(1, name);				//<--?(1) <--스위치 문으로 전환된 매개변수<아이템 이름>)
+			rs = psmt.executeQuery();					//쿼리 실행
+			if(rs.next()) {
+				int tempQtt = rs.getInt("quantity");
+				String sqlU = " UPDATE esd.inven" + " SET quantity= ? " +  " WHERE name = ? ";
+				
+//			- now() : 현재 날짜 / 시간을 반환하는 MySQL 함수
+				
+				try {
+					psmt=con.prepareStatement(sqlU);
+					psmt.setInt(1, (tempQtt+1));;
+					psmt.setString(2, name);		
+					
+					psmt.executeUpdate();
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+			}
+			}
+			
+//			조회 결과 가져오기
+			
+		} catch (SQLException e) {
 			e.printStackTrace();
 				
 		
