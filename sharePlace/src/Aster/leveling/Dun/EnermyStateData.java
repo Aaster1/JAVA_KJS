@@ -123,6 +123,11 @@ public class EnermyStateData extends JDBConnection{
 		EBQ = eBQ;
 	}
 
+	@Override
+	public String toString() {
+		return "\t"+NAME + "\n\n\t"+" HP : " + HP;
+	}
+
 	
 	
 }

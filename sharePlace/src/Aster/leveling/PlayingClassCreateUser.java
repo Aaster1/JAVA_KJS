@@ -1,16 +1,16 @@
 package Aster.leveling;
 
+
 import java.util.Scanner;
 
 import Aster.leveling.Dun.PlayerStateData;
 
-public class PlayingClassCreateUser extends PlayingClass{
-
+public class PlayingClassCreateUser{
+	Scanner sc = LevelingExcute.getSc();
 	
-	@Override
+	
 	public void createUser() {
 		PlayerStateData state = new PlayerStateData("Unknown",100,100,80,80,1,0,10,5,5,5,5,0);
-		Scanner sc = new Scanner(System.in);
 		boolean on = true;
 		System.out.println();
 		System.out.println("================\t캐릭터 생성\t========================================================================================");
@@ -65,7 +65,10 @@ public class PlayingClassCreateUser extends PlayingClass{
 					 System.out.println("==============================================================================================================================");
 					 System.out.println("캐릭터 생성을 완료합니다.");
 					 System.out.println("==============================================================================================================================");
-					 
+					 on=false;
+				 }
+				 else {
+					 continue;
 				 }
 			}else {
 				System.out.println("잘못된 입력입니다.");
@@ -76,7 +79,6 @@ public class PlayingClassCreateUser extends PlayingClass{
 			
 			
 		}while(on);
-		sc.close();
 	}
 
 

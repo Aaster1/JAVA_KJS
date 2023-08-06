@@ -4,13 +4,12 @@ import java.util.Scanner;
 
 import Aster.leveling.Dun.PlayerStateData;
 
-public class Stauts extends PlayingActionClass{
+public class Status {
 	PlayerStateData state = new PlayerStateData();
 
-	@Override
 	public void status() {
 		boolean on = true;
-		Scanner sc = new Scanner(System.in);
+		Scanner sc = LevelingExcute.getSc();
 		do {
 		System.out.println("================\t기본 능력치\t=====================================================================================================");
 		System.out.println("\t이름 : "+state.NAME);
@@ -72,7 +71,6 @@ public class Stauts extends PlayingActionClass{
 			}
 			
 		}
-		sc.close();
 		}while(on);
 	}
 

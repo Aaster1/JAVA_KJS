@@ -2,11 +2,12 @@ package Aster.leveling.Dun;
 
 import java.util.Scanner;
 
+import Aster.leveling.LevelingExcute;
+
 public class PlayerStateData {
 	public String NAME;
 	public int HP,MAXHP,MP,MAXMP,LEVEL,EXP,NEXTEXP,STR,AGI,INT,LUCK,ATK,MATK,DEF,MDEF,POINT;
 		public PlayerStateData() {
-			this("Unknown",100,100,80,80,1,0,10,5,5,5,5,0,0,0,0,0);
 		}
 	
 	
@@ -197,8 +198,16 @@ public class PlayerStateData {
 		MDEF = mDEF;
 	}
 
+	
+	
+	@Override
+	public String toString() {
+		return "\tLv. "+LEVEL+"\n\t" + NAME + "\n\n\tHP : " + HP + "/" + MAXHP + "\n\tMP : " + MP + "/" + MAXMP;
+	}
+
+
 	public void training() {
-		Scanner sc = new Scanner(System.in);
+		Scanner sc = LevelingExcute.getSc();
 		int turn = 1;
 		boolean on = true;
 		do {
@@ -322,7 +331,6 @@ public class PlayerStateData {
 		
 		}while(on);
 		System.out.println("훈련을 종료합니다.");
-		sc.close();
 	}
 	
 }
