@@ -18,21 +18,13 @@ public class TempInventory extends JDBConnection{
 		this.qtt = qtt;
 	}
 
-	public void getPotionAction(int N) {												//<--useItem 메소드에서 소지 개수가 0개일 때의 구분이 없기에, 아이템이 생성되는 버그 발생.
-		switch (N) {																			//<--해결법은, getItem을 대신 수량복구용 메소드를 새로 만들드는 방법. UPDATE SET을 통해 수량 변경을 시도.
-		case 1:																				//<--UPDATE의 경우 어차피 해당 품목을 찾지 못하면 결과반영이 없을 뿐이니 가능하다는 논리.
+	public void getPotionAction(int N) {												//조건문 대폭 수정. if(treu&true)로 성공 값 넣고, false&true, true&fasle, fasle&false의 경우를
+		switch (N) {																			//전부 
+		case 1:																				//
 			boolean tempPotion1 = false;
 			boolean tempPotion3 = false;
 			tempPotion1=useItem(1);
-			if(tempPotion1==false) {
-				notCreateGetItem(1);
-				break;
-			}
 			tempPotion3=useItem(3);
-			if(tempPotion1==false) {
-				notCreateGetItem(3);
-				break;
-			}
 			if(tempPotion1&&tempPotion3){
 				getItem(23);
 				System.out.println();
@@ -43,192 +35,226 @@ public class TempInventory extends JDBConnection{
 				System.out.println("==================================================================================================================================");
 				
 			}
+			else if (tempPotion1==false&&tempPotion3==true) {
+				notCreateGetItem(1);
+			}
+			else if (tempPotion1==true&&tempPotion3==false) {
+				notCreateGetItem(3);
+			}else if(tempPotion1==false&&tempPotion3==false){
+					notCreateGetItem(1);
+					notCreateGetItem(3);
+				}
+			
 			break;		
 		case 2:
 			boolean tempPotion4 = false;
 			boolean tempPotion8 = false;
 			tempPotion4=useItem(4);
-			if(tempPotion4==false) {
-				notCreateGetItem(4);
-				break;
-			}
-			tempPotion8=useItem(8);
-			if(tempPotion8==false) {
-				notCreateGetItem(8);
-				break;
-			}
+			tempPotion4=useItem(8);
 			if(tempPotion4&&tempPotion8){
 				getItem(24);
 				System.out.println();
 				System.out.println("==================================================================================================================================");
 				System.out.println();
-				System.out.println("\t『잔혹한 냉기』를 제조했습니다.");
+				System.out.println("\t『슬라임의 포션』을 제조했습니다.");
 				System.out.println();
 				System.out.println("==================================================================================================================================");
+				
 			}
+			else if (tempPotion4==false&&tempPotion8==true) {
+				notCreateGetItem(4);
+			}
+			else if (tempPotion4==true&&tempPotion8==false) {
+				notCreateGetItem(8);
+			}else if(tempPotion4==false&&tempPotion8==false){
+					notCreateGetItem(4);
+					notCreateGetItem(8);
+				}
+			
 			break;		
 		case 3:
 			boolean tempPotion2 = false;
 			boolean tempPotion5 = false;
-			tempPotion2=useItem(2);
-			if(tempPotion2==false) {
-				notCreateGetItem(2);
-				break;
-			}
+			tempPotion1=useItem(2);
 			tempPotion5=useItem(5);
-			if(tempPotion5==false) {
-				notCreateGetItem(5);
-				break;
-			}
 			if(tempPotion2&&tempPotion5){
 				getItem(25);
 				System.out.println();
 				System.out.println("==================================================================================================================================");
 				System.out.println();
-				System.out.println("\t『프로틴 2007』를 제조했습니다.");
+				System.out.println("\t『슬라임의 포션』을 제조했습니다.");
 				System.out.println();
 				System.out.println("==================================================================================================================================");
+				
 			}
-			break;		
+			else if (tempPotion2==false&&tempPotion5==true) {
+				notCreateGetItem(2);
+			}
+			else if (tempPotion2==true&&tempPotion5==false) {
+				notCreateGetItem(5);
+			}else if(tempPotion2==false&&tempPotion5==false){
+					notCreateGetItem(2);
+					notCreateGetItem(5);
+				}
+			
+			break;	
 		case 4:
 			boolean tempPotion6 = false;
 			boolean tempPotion7 = false;
 			tempPotion6=useItem(6);
-			if(tempPotion6==false) {
-				notCreateGetItem(6);
-				break;
-			}
 			tempPotion7=useItem(7);
-			if(tempPotion7==false) {
-				notCreateGetItem(7);
-				break;
-			}
 			if(tempPotion6&&tempPotion7){
 				getItem(26);
 				System.out.println();
 				System.out.println("==================================================================================================================================");
 				System.out.println();
-				System.out.println("\t『바람의 가호』를 제조했습니다.");
+				System.out.println("\t『슬라임의 포션』을 제조했습니다.");
 				System.out.println();
 				System.out.println("==================================================================================================================================");
+				
 			}
-			break;		
+			else if (tempPotion6==false&&tempPotion7==true) {
+				notCreateGetItem(6);
+			}
+			else if (tempPotion6==true&&tempPotion7==false) {
+				notCreateGetItem(7);
+			}else if(tempPotion6==false&&tempPotion7==false){
+					notCreateGetItem(6);
+					notCreateGetItem(7);
+				}
+			
+			break;	
 		case 5:
 			boolean tempPotion9 = false;
 			boolean tempPotion11 = false;
 			tempPotion9=useItem(9);
-			if(tempPotion9==false) {
-				notCreateGetItem(9);
-				break;
-			}
 			tempPotion11=useItem(11);
-			if(tempPotion11==false) {
-				notCreateGetItem(11);
-				break;
-			}
 			if(tempPotion9&&tempPotion11){
 				getItem(27);
 				System.out.println();
 				System.out.println("==================================================================================================================================");
 				System.out.println();
-				System.out.println("\t『수호자의 증언』를 제조했습니다.");
+				System.out.println("\t『슬라임의 포션』을 제조했습니다.");
 				System.out.println();
 				System.out.println("==================================================================================================================================");
+				
 			}
-			break;		
+			else if (tempPotion9==false&&tempPotion11==true) {
+				notCreateGetItem(9);
+			}
+			else if (tempPotion9==true&&tempPotion11==false) {
+				notCreateGetItem(11);
+			}else if(tempPotion9==false&&tempPotion11==false){
+					notCreateGetItem(9);
+					notCreateGetItem(11);
+				}
+			
+			break;	
 		case 6:
 			boolean tempPotion10 = false;
 			boolean tempPotion15 = false;
 			tempPotion10=useItem(10);
-			if(tempPotion10==false) {
-				notCreateGetItem(10);
-				break;
-			}
 			tempPotion15=useItem(15);
-			if(tempPotion15==false) {
-				notCreateGetItem(15);
-				break;
-			}
 			if(tempPotion10&&tempPotion15){
 				getItem(28);
 				System.out.println();
 				System.out.println("==================================================================================================================================");
 				System.out.println();
-				System.out.println("\t『투사의 유언』를 제조했습니다.");
+				System.out.println("\t『슬라임의 포션』을 제조했습니다.");
 				System.out.println();
 				System.out.println("==================================================================================================================================");
+				
 			}
-			break;		
+			else if (tempPotion10==false&&tempPotion15==true) {
+				notCreateGetItem(10);
+			}
+			else if (tempPotion10==true&&tempPotion15==false) {
+				notCreateGetItem(15);
+			}else if(tempPotion10==false&&tempPotion15==false){
+					notCreateGetItem(10);
+					notCreateGetItem(15);
+				}
+			
+			break;	
 		case 7:
 			
 			boolean tempPotion12 = false;
 			boolean tempPotion17 = false;
 			tempPotion12=useItem(12);
-			if(tempPotion12==false) {
-				notCreateGetItem(12);
-				break;
-			}
 			tempPotion17=useItem(17);
-			if(tempPotion17==false) {
-				notCreateGetItem(17);
-				break;
-			}
 			if(tempPotion12&&tempPotion17){
 				getItem(29);
 				System.out.println();
 				System.out.println("==================================================================================================================================");
 				System.out.println();
-				System.out.println("\t『검붉은 은총』를 제조했습니다.");
+				System.out.println("\t『슬라임의 포션』을 제조했습니다.");
 				System.out.println();
 				System.out.println("==================================================================================================================================");
+				
 			}
-			break;		
+			else if (tempPotion12==false&&tempPotion17==true) {
+				notCreateGetItem(12);
+			}
+			else if (tempPotion12==true&&tempPotion17==false) {
+				notCreateGetItem(17);
+			}else if(tempPotion12==false&&tempPotion17==false){
+					notCreateGetItem(12);
+					notCreateGetItem(17);
+				}
+			
+			break;	
 		case 8:
 			boolean tempPotion13 = false;
 			boolean tempPotion14 = false;
 			tempPotion13=useItem(13);
-			if(tempPotion13==false) {
-				notCreateGetItem(13);
-				break;
-			}
 			tempPotion14=useItem(14);
-			if(tempPotion14==false) {
-				notCreateGetItem(14);
-				break;
-			}
 			if(tempPotion13&&tempPotion14){
-				getItem(30);
+				getItem(23);
 				System.out.println();
 				System.out.println("==================================================================================================================================");
 				System.out.println();
-				System.out.println("\t『마공학 핵』를 제조했습니다.");
+				System.out.println("\t『슬라임의 포션』을 제조했습니다.");
 				System.out.println();
 				System.out.println("==================================================================================================================================");
+				
 			}
-			break;		
+			else if (tempPotion13==false&&tempPotion14==true) {
+				notCreateGetItem(13);
+			}
+			else if (tempPotion13==true&&tempPotion14==false) {
+				notCreateGetItem(14);
+			}else if(tempPotion13==false&&tempPotion14==false){
+					notCreateGetItem(13);
+					notCreateGetItem(14);
+				}
+			
+			break;	
 		case 9:
 			boolean tempPotion16 = false;
 			boolean tempPotion18 = false;
 			tempPotion16=useItem(16);
-			if(tempPotion16==false) {
-				notCreateGetItem(16);
-				break;
-			}
 			tempPotion18=useItem(18);
-			if(tempPotion18==false) {
-				notCreateGetItem(18);
-				break;
-			}
 			if(tempPotion16&&tempPotion18){
-				getItem(31);
+				getItem(23);
 				System.out.println();
 				System.out.println("==================================================================================================================================");
 				System.out.println();
-				System.out.println("\t『창공의 수혜』를 제조했습니다.");
+				System.out.println("\t『슬라임의 포션』을 제조했습니다.");
 				System.out.println();
 				System.out.println("==================================================================================================================================");
+				
 			}
-			break;		
+			else if (tempPotion16==false&&tempPotion18==true) {
+				notCreateGetItem(16);
+			}
+			else if (tempPotion16==true&&tempPotion18==false) {
+				notCreateGetItem(18);
+			}else if(tempPotion16==false&&tempPotion18==false){
+					notCreateGetItem(16);
+					notCreateGetItem(18);
+				}
+			
+			break;	
 		case 10:
 			boolean tempPotion41 = false;
 			boolean tempPotion42 = false;

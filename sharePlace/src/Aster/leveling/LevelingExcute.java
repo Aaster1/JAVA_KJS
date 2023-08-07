@@ -13,6 +13,7 @@ public class LevelingExcute {
 	}
 	
 	public static void main(String[] args) {
+		
 		Playing play = new PlayingClass();
 		
 		play.createUser();
