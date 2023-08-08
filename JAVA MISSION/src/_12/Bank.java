@@ -30,12 +30,12 @@ public class Bank {
 			String ansNum = sc.nextLine();
 			System.out.println();
 			System.out.print("비밀번호>> ");
-			int tempPassword = sc.nextInt();
-			sc.nextLine();
-			for (Account account : acc) {
-				if (account.accountNumber.equals(ansNum)) {
-					if(account.password.equals(tempPassword)) {
-						System.out.println("'"+account.accountHolder+"'님의 계좌잔액은 "+account.balance+"원입니다.");
+			String tempPassword = sc.nextLine();
+			for (int i = 0; i < accCount; i++) {
+				
+				if (acc[i].accountNumber.equals(ansNum)) {
+					if(acc[i].password.equals(tempPassword)) {
+						System.out.println("'"+acc[i].accountHolder+"'님의 계좌잔액은 "+acc[i].balance+"원입니다.");
 						System.out.println("==========================================================================");
 						on=false;
 					}else {
@@ -45,9 +45,11 @@ public class Bank {
 
 						on=false;
 					}
+				} else {
+					System.out.println("일치하는 계좌가 없습니다.");
 				}
-				
 			}
+				
 		}
 	}
 	static void withdrawal() {
@@ -58,16 +60,16 @@ public class Bank {
 			String ansNum = sc.nextLine();
 			System.out.println();
 			System.out.print("비밀번호>> ");
-			int tempPassword = sc.nextInt();
-			sc.nextLine();
-			for (Account account : acc) {
-				if (account.accountNumber.equals(ansNum)) {
-					if(account.password.equals(tempPassword)) {
+			String tempPassword = sc.nextLine();
+			for (int i = 0; i < accCount; i++) {
+				
+				if (acc[i].accountNumber.equals(ansNum)) {
+					if(acc[i].password.equals(tempPassword)) {
 						System.out.print("출금액>> ");
 						int tempBalance=sc.nextInt();
 						sc.nextLine();
-						account.withdrawal(tempBalance);
-						System.out.println("'"+account.accountHolder+"'님의 계좌에서 "+tempBalance+"원이 출금되었습니다.");
+						acc[i].withdrawal(tempBalance);
+						System.out.println("'"+acc[i].accountHolder+"'님의 계좌에서 "+tempBalance+"원이 출금되었습니다.");
 						System.out.println("==========================================================================");
 
 						on=false;
@@ -80,9 +82,10 @@ public class Bank {
 					}
 					}
 					
+			}
 				}
 			}
-		}
+		
 		
 	static void deposit() {
 		boolean on = true;
@@ -94,17 +97,18 @@ public class Bank {
 			System.out.print("입금액>> ");
 			int tempBalance = sc.nextInt();
 			sc.nextLine();
-			for (Account account : acc) {
-				if (account.accountNumber.equals(ansNum)) {
-					System.out.println("'"+account.accountHolder+"'님에게 입금하는게 맞으십니까?");
+			for (int i = 0; i < accCount; i++) {
+				
+				if (acc[i].accountNumber.equals(ansNum)) {
+					System.out.println("'"+acc[i].accountHolder+"'님에게 입금하는게 맞으십니까?");
 					System.out.println("1. 예");
 					System.out.println("2. 아니오");
 					System.out.print("입력>> ");
 					int answer = sc.nextInt();
 					sc.nextLine();
 					if(answer ==1) {
-						account.deposit(tempBalance);
-						System.out.println("'"+account.accountHolder+"'님에게 "+tempBalance+"원이 입금되었습니다.");
+						acc[i].deposit(tempBalance);
+						System.out.println("'"+acc[i].accountHolder+"'님에게 "+tempBalance+"원이 입금되었습니다.");
 						System.out.println("==========================================================================");
 						on=false;
 					}
@@ -112,21 +116,24 @@ public class Bank {
 				}
 			}
 		}
+		}
 
-	}
+	
 
 	static void create() {
 		boolean on = true;
 		while (on) {
+			acc[accCount]=new Account();
 			System.out.print("계좌번호>> ");
-			acc[accCount].setAccountNumber(sc.nextLine());
-			System.out.println();
+			String tempAN=sc.nextLine();
+			acc[accCount].setAccountNumber(tempAN);
 			System.out.print("예금주>> ");
-			acc[accCount].setAccountHolder(sc.nextLine());
-			System.out.println();
+			String tempAH = sc.nextLine();
+			acc[accCount].setAccountHolder(tempAH);
 			System.out.print("최초예금액>> ");
-			boolean sb = acc[accCount].setBalance(sc.nextInt());
+			int tempB = sc.nextInt();
 			sc.nextLine();
+			boolean sb = acc[accCount].setBalance(tempB);
 			System.out.println();
 			System.out.print("비밀번호>> ");
 			acc[accCount].setPassword(sc.nextLine());
@@ -188,7 +195,6 @@ public class Bank {
 	}
 
 	public static void main(String[] args) {
-
 		base();
 	}
 }
