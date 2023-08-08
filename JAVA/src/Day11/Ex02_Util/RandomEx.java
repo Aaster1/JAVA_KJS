@@ -33,7 +33,7 @@ public class RandomEx {
 //		enxtInt(N) +1	:	1 ~ N까지의 난수를 반환
 		
 //		[공식]
-//		random.nextInt(개수) + 시작숫자
+//		random.nextInt(개수(=범위)) + 시작숫자
 		
 		int dice = random.nextInt(6) +1;
 		System.out.println("주사위 : "+dice);

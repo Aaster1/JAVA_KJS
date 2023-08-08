@@ -5,9 +5,9 @@ import java.util.Calendar;
 public class CalendarEx {
 
 	public static void printCalendar(String msg, Calendar cal) {			//<-현재 정보를 기준으로 생성된 클래스의 정보를 변수값으로 세팅하고 출력하는 메소드
-		int year = cal.get(Calendar.YEAR);				//<-get() 에다가 1넣어도 됨 ㅋㅋ 상수명칭에 의미가 있고, 값이 연결체같은 느낌임
-		int month= cal.get(Calendar.MONTH)+1;
-		int day = cal.get(Calendar.DAY_OF_MONTH);			//<--월 ( 0 ~ 11)
+		int year = cal.get(1);				//<-get() 에다가 1넣어도 됨 ㅋㅋ 상수명칭에 의미가 있고, 값이 연결체같은 느낌임
+		int month= cal.get(Calendar.MONTH)+1;					//<--월 ( 0 ~ 11)
+		int day = cal.get(Calendar.DAY_OF_MONTH);			
 		int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);		//일 ~ 토(1~7)
 		int hour = cal.get(Calendar.HOUR);							//12시 표시
 		int hourOfDay = cal.get(Calendar.HOUR_OF_DAY);		//24시 표시
@@ -23,22 +23,22 @@ public class CalendarEx {
 			Day = "일요일";
 			break;
 		case Calendar.MONDAY:
-			Day = "일요일";
+			Day = "월요일";
 			break;
 		case Calendar.TUESDAY:
-			Day = "일요일";
+			Day = "화요일";
 			break;
 		case Calendar.WEDNESDAY:
-			Day = "일요일";
+			Day = "수요일";
 			break;
 		case Calendar.THURSDAY:
-			Day = "일요일";
+			Day = "목요일";
 			break;
 		case Calendar.FRIDAY:
-			Day = "일요일";
+			Day = "금요일";
 			break;
 		case Calendar.SATURDAY:
-			Day = "일요일";
+			Day = "토요일";
 			break;
 
 		}

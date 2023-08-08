@@ -9,7 +9,7 @@ public class ArraysEx {
 	public static void main(String[] args) {
 		
 //		정렬되지 않은 요소들의 배열을 생성
-		Integer[] arr = {5,3,4,1,2};
+		Integer[] arr = {5,3,4,1,2};			//<-박싱을 위해 Integer자료형으로 불러옴.
 		
 //		배열 정렬띠 ㅋㅋㅋㅋ
 		Arrays.sort(arr);
@@ -45,7 +45,7 @@ public class ArraysEx {
 		
 //		이진 탐색(검색) 알고리즘을 사용하여 검색한 후,
 //		해당 값이 있으면, 그 위치(index)를 반환
-//		찾이 못했으면, ( - (insertion point)-1)음수를 반환 <- 쉽게말해 찾으려했던 근사위치에서 -를 붙인다.
+//		찾지 못했으면, ( - (insertion point)-1)음수를 반환
 		if(Arrays.binarySearch(random,20)< 0) {
 			System.out.println("랜덤 수 20이 없습니다");
 			System.out.println(" - (insertion point)-1: " + Arrays.binarySearch(random,20));
@@ -58,7 +58,7 @@ public class ArraysEx {
 //		Arrays.fill(값)	:	값으로 모든 배열요소를 채우는 메소드
 		int fill[] = new int[10];
 		
-		Arrays.fill(fill, 8);
+		Arrays.fill(fill, 8);				//<--문자열 안들어가더라
 		
 		for (int i = 0; i < fill.length; i++) {
 			System.out.print(fill[i]+" ");
