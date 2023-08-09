@@ -4,6 +4,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+//	캘린더 사용할 때 도움이되는 Date 기능과 SimpleDateFormat
+
 public class DateEx {
 
 	public static void main(String[] args) throws ParseException {

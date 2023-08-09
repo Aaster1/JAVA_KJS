@@ -60,7 +60,7 @@ public class CalendarEx {
 //		set () 날짜지정
 		Calendar test = Calendar.getInstance();
 //		월(MONTH) : 0 ~ 11
-		test.set(2024, Calendar.JANUARY, 24);
+		test.set(2024, Calendar.JANUARY, 24); 				//<-- 뒤에 시2자리, 분2자리, 초2자리를 쉼표단위로 입력하면 시분초 세팅 가능, 오버로딩 메소드임
 		
 //		getTimeInMillis();는 날짜를 ms단위까지 숫자로 반환
 //		1970년 1월 1일 0시 0초 0ms부터 카운트한 숫자를 반환

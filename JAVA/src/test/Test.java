@@ -1,17 +1,30 @@
 package test;
 
-public class Test {
-	
-	
-	public static int sum(int a, int b) {
-		System.out.print(a+" + "+b+" = ");
-		return a+b;
+import Day03.Class.Pikachu;
+
+class Arrays<T>{
+	private T t;
+
+	public T getT() {
+		return t;
 	}
-public static void main(String[] args) {
-	int a=5;
-	int b=4;
+
+	public void setT(T t) {
+		this.t = t;
+	}
 	
-	System.out.println(sum(a,b));
 	
 }
+
+
+public class Test{
+	
+	public static void main(String[] args) {
+	
+		Arrays<Pikachu> pika = new Arrays<Pikachu>();
+		pika.setT(new Pikachu());
+		pika.setT(new Pikachu());
+		System.out.println(pika.getT());
+		
+	}
 }
