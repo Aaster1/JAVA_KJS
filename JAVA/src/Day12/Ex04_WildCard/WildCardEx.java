@@ -19,6 +19,10 @@ public class WildCardEx {
 		System.out.println("과정명 : "+course.getName());
 		System.out.println(course.getStudents());
 	}
+	public static <T> void joinCourse2(Course<T> course) {
+		System.out.println("과정명 : "+course.getName());
+		System.out.println(course.getStudents());
+	}
 	
 	
 	
@@ -50,6 +54,8 @@ public class WildCardEx {
 		
 //		직장인 과정, 정원 5명
 		Course<Worker> workCourse = new Course<Worker>("직장인과정", 5);
+		
+//		workCourse.add(new Person("일반인"));
 		workCourse.add(new Worker("직장인"));
 //		workCourse.add(new Student("학생"));			//<- 불가능. 생성된 객체는 Worker 타입으로 생성되어있다. 학생은 아무런 상관이 없기에 불가능
 		
@@ -67,6 +73,7 @@ public class WildCardEx {
 		
 //		일반과정에 수강등록
 		joinCourse(perCourse);
+		joinCourse2(perCourse);
 
 //		직장인과정에 수강등록
 		joinCourseWorker(perCourse);
