@@ -1,60 +1,54 @@
 package test;
 
-class S{
-	
-}
+import java.util.ArrayList;
+import java.util.Scanner;
 
-class A extends S{
+class Temp{
 	
-}
-class B extends A{
-	
-}
+	String name;
 
-class C extends B{
 	
-}
-
-
-class Box<T>{
-	private T t;
-	
-	public T getT() {
-		return t;
+	public Temp(String name) {
+		this.name = name;
 	}
 	
-	public void setT(T t) {
-		this.t = t;
-	}
-	
-	public 
-	}
-	
-	
-	
-	
 }
+
+
 public class Test{
 	
+	static Scanner sc = new Scanner(System.in);
+	
+	static void playing(){
+		System.out.println("몇 게임?");
+//		int N = 
+	}
+	static void auto(){
+		
+	}
+	static void menual() {
+		
+	}
+	static void result() {
+		
+	}
 	
 	
 	public static void main(String[] args) {
-		
-		Box<String> box1 = new Box<String>();
-		Box<B> box2 = new Box<>();
 
-		box1.setT("문자열저장소1");
-		System.out.println(box1.getT());
+		ArrayList<Temp> temp = new ArrayList<>();
 		
-		box2.setT(1131);
-		System.out.println(box2.getT());
+		Temp temtemp = new Temp("안녕?");
 		
-		box2.setT((B)new A());
+		temp.add(temtemp);
 		
-		
+		System.out.println(temp.get(0).name);
 		
 		
+		temtemp.name = "잘가";
 		
+		System.out.println(temp.get(0).name);
 		
 	}
+	
 }

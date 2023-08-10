@@ -11,6 +11,7 @@ public class StackEx {
 		
 		
 //		push(요소) 	: 	요소를 TOP 위에 추가
+		
 		stack.push(1);
 		stack.push(2);
 		stack.push(3);

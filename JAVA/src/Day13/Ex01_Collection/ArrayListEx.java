@@ -5,12 +5,11 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 public class ArrayListEx {
+	static Scanner sc = new Scanner(System.in);
 
 	
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
 		
-		int a = sc.nextInt();
 		ArrayList<String> list = new ArrayList<>();
 		
 //		요소 추가
@@ -64,8 +63,8 @@ public class ArrayListEx {
 //		반복4	for + Iterator 선언부와 조건식만 존재
 		i =0;
 		System.out.println(">>반복 4");
-		for (Iterator iterator = list.iterator(); iterator.hasNext();) {
-			String string = (String) iterator.next();
+		for (Iterator<String> iterator = list.iterator(); iterator.hasNext();) {
+			String string =  iterator.next();
 			System.out.println("string" + ++i + " : "+string);
 		}
 		

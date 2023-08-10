@@ -49,6 +49,7 @@ public class LinkedListEx {
 				
 				Board board = new Board(title,writer,content);
 				
+				boardList.add(board);
 			}
 			for (Board board : boardList) {
 				System.out.println(board);
