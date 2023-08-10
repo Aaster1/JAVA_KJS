@@ -9,7 +9,7 @@ public class SimpleDateFormatEx {
 	
 	public static void main(String[] args) throws ParseException{
 		/*
-			yyyy 	MM 		dd 		HH 		    hh			mm 		ss				<--1자리도 가능! 방법은 문자를 1개만
+			yyyy 	MM 		dd 		hh 		    HH			mm 		ss				<--1자리도 가능! 방법은 문자를 1개만
 			4자연도 	2자월	2자일	2자시(12)	2자시(24)	2자분    2자초
 			
 			D			W			w			E			a		
