@@ -1,11 +1,13 @@
-package Day07.Ex05_BoardInterface;
+package Day14.Board.DAO;
+
+import java.util.List;
 
 import Day14.Board.DTO.Text;
 
 public interface DataService {
 
-	Text[] selectList();
-	Text[] selectList(int boardNo);
+	List <?extends Text> selectList();
+	List <?extends Text>selectList(int no);
 	
 //	데이터 조회
 	Text select(int no); 

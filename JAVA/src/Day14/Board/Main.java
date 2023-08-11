@@ -1,10 +1,17 @@
-package Day07.Ex05_BoardInterface;
+package Day14.Board;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
+import Day14.Board.DTO.Board;
 import Day14.Board.DTO.Comment;
 import Day14.Board.DTO.Text;
+import Day14.Board.Service.BoardService;
+import Day14.Board.Service.BoardServiceImpl;
+import Day14.Board.Service.CommentService;
+import Day14.Board.Service.CommentServiceImpl;
 
 
 // 미친듯이 반복 복습하기 
@@ -22,14 +29,18 @@ import Day14.Board.DTO.Text;
 
 public class Main {
 	static Scanner sc = new Scanner(System.in);
-	static int max = 10;		// <--게시글 최대 개수 설정
-	static Text[] boardList= new Text[max];		//<--게시글 개수 배열
-	static DataService data = new BoardAccess();		//데이터 베이스 접근 객체
+	
+	static List<Board> boardList= new ArrayList<Board>();		//<--게시글 개수 배열
+	static List<Comment> commentList = new ArrayList<Comment>();
+//	비즈니스 로직 계층으로 전환(Service 패키지)
+//	비즈니스 로직 계층의 객체를 생성
+	static BoardService boardService= new BoardServiceImpl();		//데이터 베이스 접근 객체
+	static CommentService commentService = new CommentServiceImpl();
 //	보드엑세스 객체 생성할 때, 그 super클래스인 JDBConnection까지 생성된다. 묵시적. compiler가 묵시적으로 수행.
 //	생성하는 객체의 부모 객체가 생성되어있지않으면 부모 객체 생성을 따로 안해도 생성이 이루어진다는 이야기다.
 	
-	static DataService data2 = new CommentAccess();		//데이터 베이스 접근 객체
-	static Text[] commentList = new Comment[max]; 		//댓글 목록
+	
+	
 	public static void menu() {
 		System.out.println("================\t게\t시\t판\t===============");
 		System.out.println("1. 게시글 목록");
@@ -49,28 +60,55 @@ public class Main {
 	
 	public static void list() {
 		System.out.println("========\t게\t시\t판\t목\t록\t=======");
-		boardList = data.selectList();
-		for (Text board : boardList) {
-			if(board ==null) {
-				System.out.println("(게시글 없음)");
-				continue;
-			}
-			int boardNo = board.getNo();
-			String title = board.getTitle();
-			String writer = board.getWriter();
-			String content = board.getContent();
-			Date regDate = board.getRegDate();
-			
-			
-			System.out.println("("+boardNo+") \t | " + title + " \t| " + writer+ " \t| "+content+" \t| " + regDate );
+		boardList = boardService.list();
+		printaAll(boardList);
+	}
+	
+	public static void printaAll(List<? extends Text> list) {
+		if(list==null||list.isEmpty()) {
+			System.out.println("조회딘 글이 없습니다.");
+			return;		//<--반환 값이 없는 메소드에서도 return;으로 끝내면 종료의 의미가 있다!!!!!
 		}
+		for (Text text : list) {
+			print(text);
+		}
+	}
+	
+	public static void print(Text text) {
+		
+		if(text==null) {
+			System.out.println("조회되지 않는 글");
+			return;
+		}
+		int no = text.getNo();
+		String title = text.getTitle();
+		String writer = text.getWriter();
+		String content = text.getContent();
+		Date regDate = text.getRegDate();
+		Date updDate = text.getUpdDate();
+		
+		System.out.println();
+		System.out.println("# 글번호 : "+no+" ================");
+		System.out.println();
+		if(text instanceof Board)
+		System.out.println("# 제목 : "+title);
+		System.out.println("# 작성자 : "+writer);
+		System.out.println("# " + content);
+		System.out.println(" - 등록일자 : " +regDate);
+		System.out.println(" - 수정일자 : " +updDate);
+		System.out.println();
+		System.out.println("=========================");
+		System.out.println();
 
 	}
+	
+	
+	
 	public static void read() {
 		System.out.println("========\t게\t시\t글\t읽\t기\t=======");
 		System.out.println("================ 글 번호 : ");
 		int boardNo=sc.nextInt();
-		Text board = data.select(boardNo);
+		Text board = boardService.select(boardNo);
 
 		String title = board.getTitle();
 		String writer = board.getWriter();
@@ -93,19 +131,20 @@ public class Main {
 		
 //		해당 글의 댓글 목록
 		
-		commentList = data2.selectList(boardNo);
+		commentList = commentService.list(boardNo);
 
 		System.out.println("================\t[댓 글 목 록]\t================");
 		
-		for (int i = 0; i < commentList.length; i++) {
-			if(commentList[i] ==null)continue;
+		for (Comment comment : commentList) {
+			if(comment ==null)continue;
 			
-			int commentNo = commentList[i].getNo();
-			String commentWriter = commentList[i].getWriter();
-			String commentContent = commentList[i].getContent();
-			Date commentRegDate = commentList[i].getRegDate();
-			Date commentUpdDate = commentList[i].getUpdDate();
+			int commentNo = comment.getNo();
+			String commentWriter = comment.getWriter();
+			String commentContent = comment.getContent();
+			Date commentRegDate = comment.getRegDate();
+			Date commentUpdDate = comment.getUpdDate();
 			
+			System.out.println("==========================================================");
 			System.out.println("("+commentNo+") - [" + commentWriter + "]");
 			System.out.println("# : " + commentContent );
 			System.out.println("# - 등록일자 : " + commentRegDate);
@@ -120,7 +159,7 @@ public class Main {
 	 */
 	public static void write() {
 		System.out.println("========\t게\t시\t글\t쓰\t기\t=======");
-		Text board = input();
+		Board board = input();
 		
 //		System.out.println("제목 : ");
 //		String title = sc.nextLine();				//<-- enter 또한 입력값으로 취급받기에, 바로 다음 입력 받는 변수가 이를 값을 인식해버린다. 해결법은 엔터를 없애버리기 
@@ -130,7 +169,9 @@ public class Main {
 //		String content= sc.nextLine();
 		
 //		Text board = new Board(title,writer,content);
-		int result = data.insert(board);
+		int result = boardService.insert(board);
+		
+		//에러 수정필요
 		if(result >0) {
 			System.out.println("게시글이 작성되었습니다.");
 		}
@@ -145,11 +186,11 @@ public class Main {
 		System.out.println("================게시글 수정 : > >");
 		int boardNo = sc.nextInt();
 		sc.nextLine();
-		Text boardInput = input();
+		Board boardInput = input();
 		
 		boardInput.setNo(boardNo);
 		
-		int result = data.update(boardInput);
+		int result = boardService.update(boardInput);
 		if(result >0) {
 			System.out.println("게시글이 수정되었습니다.");
 		}
@@ -161,13 +202,13 @@ public class Main {
 			sc.nextLine();
 			
 			
-			int result = data.delete(boardNo);
+			int result = boardService.delete(boardNo);
 			if(result >0) {
 				System.out.println(boardNo+"번 게시글이 삭제되었습니다.");
 			}
 		}
 	
-		public static Text input() {
+		public static Board input() {
 			System.out.print("제목 : ");
 			String title = sc.nextLine();
 			System.out.print("작성자 : ");
@@ -175,7 +216,7 @@ public class Main {
 			System.out.print("내용 : ");
 			String content= sc.nextLine();
 			
-			Text board = new Text(title,writer,content);
+			Board board = new Board(title,writer,content);
 			return board;
 			
 		}
@@ -191,7 +232,7 @@ public class Main {
 			Comment comment = inputComment();
 			comment.setNo(boardNo);
 			
-			int result = data2.insert(comment);
+			int result = commentService.insert(comment);
 			
 			if(result >0) {
 				System.out.println("댓글이 작성되었습니다.");
@@ -205,7 +246,7 @@ public class Main {
 				Comment comment = inputComment();
 				comment.setNo(commentNo);
 				
-				int result = data2.update(comment);
+				int result = commentService.update(comment);
 				
 				if(result >0) {
 					System.out.println("댓글이 수정되었습니다.");
@@ -217,7 +258,7 @@ public class Main {
 					int commentNo = sc.nextInt();
 					sc.nextLine();
 					
-					int result = data2.delete(commentNo);
+					int result = commentService.delete(commentNo);
 					
 					if(result >0) {
 						System.out.println("댓글이 삭제되었습니다.");

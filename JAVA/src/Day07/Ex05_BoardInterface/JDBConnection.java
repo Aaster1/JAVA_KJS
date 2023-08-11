@@ -15,14 +15,19 @@ public class JDBConnection {
 //	기본 생성자
 	public JDBConnection() {
 		try {
+
+
 			Class.forName("com.mysql.cj.jdbc.Driver");
+			
 			
 //			DB에 연결
 			String url = "jdbc:mysql://localhost:3306/Aster?serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true&useSSL=false";
 			String id= "Aster";
 			String pw = "12345678";
 			
+			
 			con = DriverManager.getConnection(url,id,pw);
+			
 			
 			
 			System.out.println("DB 연결 성공");
@@ -33,8 +38,5 @@ public class JDBConnection {
 		}
 	}
 	
-	public static void main(String[] args) {
-//		JDBConnection jdbc = new JDBConnection();
-	}
 	
 }

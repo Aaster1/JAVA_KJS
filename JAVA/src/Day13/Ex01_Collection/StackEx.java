@@ -2,6 +2,18 @@ package Day13.Ex01_Collection;
 
 import java.util.Stack;
 
+/*
+	Stack
+	:	"쌓다"
+	데이터를 한 쪽 방향에서만 추가하고 삭제할 수 있는 자료구조 (!=큐 : 한쪽 방향에서 추가, 다른 한 쪽 방향에서 삭제)
+	최상위 데이터 : TOP
+	
+	자료추가 - Push : Top 위에 데이터를 추가
+	자료삭제 - Pop  : Top 의 데이터를 삭제
+	
+	LIFO / 후입선출
+	
+*/
 public class StackEx {
 
 	public static void main(String[] args) {

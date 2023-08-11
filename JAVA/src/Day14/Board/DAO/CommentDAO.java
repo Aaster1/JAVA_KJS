@@ -1,15 +1,16 @@
-package Day07.Ex05_BoardInterface;
+package Day14.Board.DAO;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import Day14.Board.DTO.Comment;
 import Day14.Board.DTO.Text;
 
-public class CommentAccess extends JDBConnection implements DataService {
+public class CommentDAO extends JDBConnection implements DataService {
 
-	public Text[] selectList() {
-		int max = Main.max;
-		Comment[] commentList = new Comment[max];
+	public List<? extends Text>selectList() {
+		List<Comment>commentList = new ArrayList<Comment>();
 
 //		SQL 
 		String sql = "SELECT *" + "FROM comment ";
@@ -29,9 +30,7 @@ public class CommentAccess extends JDBConnection implements DataService {
 				comment.setRegDate(rs.getTimestamp("reg_date"));
 				comment.setUpdDate(rs.getTimestamp("upd_date"));
 
-				if (i >= max)
-					break;
-				commentList[i++] = comment;
+				commentList.add(comment);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -72,9 +71,8 @@ public class CommentAccess extends JDBConnection implements DataService {
 	
 //	특정 글에 해당하는 댓글 데이터 목록 조회
 
-		public Text[] selectList(int boardNo) {
-			int max = Main.max;
-			Comment[] commentList = new Comment[max];
+		public List<? extends Text> selectList(int boardNo) {
+			List<Text>commentList = new ArrayList<Text>();
 
 //			SQL 
 			String sql = "SELECT *" + "FROM comment " + " WHERE board_no = ?";
@@ -97,10 +95,9 @@ public class CommentAccess extends JDBConnection implements DataService {
 					comment.setContent(rs.getString("content"));
 					comment.setRegDate(rs.getTimestamp("reg_date"));
 					comment.setUpdDate(rs.getTimestamp("upd_date"));
-
-					if (i >= max)
-						break;
-					commentList[i++] = comment;
+					
+					commentList.add(comment);
+					
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

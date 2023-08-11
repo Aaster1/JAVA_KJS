@@ -5,6 +5,27 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Vector;
 
+/*
+
+	List 인터페이스
+	- 요소 추가
+	add(E)			//<-맨 끝에 추가
+	add(index, E)	//<-index 추가
+	set(index, E)	//<-index 요소를 E로 지정(변경)
+	addAll(Collections) // 해당 컬렉션에 지정한 컬렉션 요소 전체를 추가
+	
+	- 요소 검색
+	get(index)		// index에 있는 요소를 반환
+	contains(Object)// 포함 여부를 true/false로 반환
+	isEmpty()		//컬렉션의 empty여부 true/false로 반환
+	size()			//요소의 개수 반환
+	
+	- 요소 삭제
+	remove(index)	//index로 접근하여 삭제
+	remove(Object)	//Object로 접근하여 삭제
+	clear()			//모든 요소 삭제
+
+*/
 public class VectorEx {
 	public static void printList(List<?> list){		//<-상위문서인List를 와일드카드 기준으로 사용
 		
