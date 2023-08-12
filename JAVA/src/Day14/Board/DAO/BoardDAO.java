@@ -19,7 +19,6 @@ public class BoardDAO extends JDBConnection implements DataService{
 		try {
 			stmt = con.createStatement();		//<--쿼리 실행 객체 생성
 			rs = stmt.executeQuery(sql);		//<--쿼리 실행 - 결과 --> rs(ResultSet)
-			int i =0;
 			while(rs.next()) {
 				Board board = new Board();
 				

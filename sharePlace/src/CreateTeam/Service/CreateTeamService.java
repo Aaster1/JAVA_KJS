@@ -15,16 +15,14 @@ public class CreateTeamService {
 		return sdao.importTeam(team);
 	}
 	
-	public boolean assign(int studentN, int teamN) {
-		Person person = sdao.importPerson(studentN);
-		person.setGrade(person.getGrade()+10);
-		
-		
-		return sdao.assign(studentN,teamN);
+	public Boolean assign(int studentN, int teamN) {
+		Person result = sdao.assign(studentN);
+		result.setGrade(result.getGrade()+10);
+		return sdao.assign2(result,teamN);
 	}
-	public boolean setGrade(int teamNum, int studentNum) {
+	public boolean setGrade(int teamNum, int studentNum, int grade) {
 		
-		return sdao.setGrade(teamNum,studentNum);
+		return sdao.setGrade(teamNum,studentNum,grade);
 	}
 	
 	public boolean initialize() {

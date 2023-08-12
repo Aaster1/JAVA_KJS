@@ -1,4 +1,4 @@
-package TeamAssign;
+package CreateTeam.TeamAssign;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -16,7 +16,7 @@ public class Front {
 	static ArrayList<Person> team3 = new ArrayList<Person>();
 	static ArrayList<Person> team4 = new ArrayList<Person>();
 	static ArrayList<Person> nonAssign= new ArrayList<Person>();
-	static Person person = Person.getInstance();
+	static Person person = new Person();
 	static CreateTeamService cts = new CreateTeamService();
 	static CreateStudentService css = new CreateStudentService();
 
@@ -254,8 +254,16 @@ public class Front {
 		System.out.print("입력>>");
 		int sN = sc.nextInt();
 		sc.nextLine();
-		
-		boolean result = cts.setGrade(N,sN);
+		System.out.println();
+		System.out.println("===================================================================================================================");
+		System.out.println();
+		System.out.println("\t몇 점으로 수정하시겠습니까?");
+		System.out.println();
+		System.out.println("===================================================================================================================");
+		System.out.println();
+		int gN = sc.nextInt();
+		sc.nextLine();
+		boolean result = cts.setGrade(N,sN,gN);
 		if(result) {
 			System.out.println();
 			System.out.println("===================================================================================================================");

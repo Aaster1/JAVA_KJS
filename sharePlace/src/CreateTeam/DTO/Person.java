@@ -2,17 +2,22 @@ package CreateTeam.DTO;
 
 public class Person {
 
-	private static Person instance;
 	private int no,age,grade;
 	private String name,title,ses;
 	
-	private Person() {
-		
+	public Person() {
 	}
-	public static Person getInstance() {
-		if(instance == null) instance = new Person();
-		return instance;
+	
+	public Person(int no, int age, int grade, String name, String title, String ses) {
+		super();
+		this.no = no;
+		this.age = age;
+		this.grade = grade;
+		this.name = name;
+		this.title = title;
+		this.ses = ses;
 	}
+
 	public int getNo() {
 		return no;
 	}
@@ -43,14 +48,18 @@ public class Person {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public static void setInstance(Person instance) {
-		Person.instance = instance;
-	}
 	public String getSes() {
 		return ses;
 	}
 	public void setSes(String ses) {
 		this.ses = ses;
 	}
+
+	@Override
+	public String toString() {
+		return "[ no : " + no + " || name : " + name + " || age : " + age + "|| ses : " + ses + " || grade : " + grade
+				+ " || title : " + title + " ]";
+	}
+	
 	
 }

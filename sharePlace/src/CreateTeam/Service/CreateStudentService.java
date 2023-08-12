@@ -9,6 +9,6 @@ public class CreateStudentService {
 		
 		public boolean createPerson(Person person) {
 			
-			return nsdao.createPerson();
+			return nsdao.createPerson(person);
 		}
 }
