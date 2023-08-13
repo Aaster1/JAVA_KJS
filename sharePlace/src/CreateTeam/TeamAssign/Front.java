@@ -16,7 +16,6 @@ public class Front {
 	static ArrayList<Person> team3 = new ArrayList<Person>();
 	static ArrayList<Person> team4 = new ArrayList<Person>();
 	static ArrayList<Person> nonAssign= new ArrayList<Person>();
-	static Person person = new Person();
 	static CreateTeamService cts = new CreateTeamService();
 	static CreateStudentService css = new CreateStudentService();
 
@@ -328,6 +327,7 @@ public class Front {
 	}
 	
 	static void createPerson() {
+	Person person = new Person();
 		boolean on =true;
 		boolean confirm2 = false;
 		System.out.println();
