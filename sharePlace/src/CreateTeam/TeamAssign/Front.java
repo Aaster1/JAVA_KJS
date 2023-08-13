@@ -219,6 +219,7 @@ public class Front {
 		System.out.println("\t배정시킬 팀 번호를 입력해주세요.");
 		int teamN = sc.nextInt();
 		sc.nextLine();
+		
 		boolean result = cts.assign(studentN,teamN);
 		if(result) {
 			System.out.println();

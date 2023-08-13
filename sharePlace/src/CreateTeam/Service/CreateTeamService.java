@@ -17,8 +17,13 @@ public class CreateTeamService {
 	
 	public Boolean assign(int studentN, int teamN) {
 		Person result = sdao.assign(studentN);
+		if(result.getName()==null) {
+			return false;
+		}else {
+		sdao.delete(studentN);
 		result.setGrade(result.getGrade()+10);
 		return sdao.assign2(result,teamN);
+		}
 	}
 	public boolean setGrade(int teamNum, int studentNum, int grade) {
 		

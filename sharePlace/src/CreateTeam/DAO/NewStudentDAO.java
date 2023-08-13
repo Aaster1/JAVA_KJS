@@ -8,7 +8,7 @@ public class NewStudentDAO extends JDBConnection{
 	
 	public Boolean createPerson(Person person) {
 		
-		String sql = "INSER INTO esd.team5(name,age,ses,grade,title) VALUES (?,?,?,?,?);";
+		String sql = "INSERT INTO esd.team5(name,age,ses,grade,title) VALUES (?,?,?,?,?);";
 		
 		try {
 			psmt = con.prepareStatement(sql);
@@ -17,6 +17,7 @@ public class NewStudentDAO extends JDBConnection{
 			psmt.setString(3,person.getSes());
 			psmt.setInt(4,person.getGrade());
 			psmt.setString(5,person.getTitle());
+			psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;

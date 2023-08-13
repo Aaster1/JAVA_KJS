@@ -1,5 +1,6 @@
-no
-name
-age
-grade
-title
+no			INT
+name	VARCHAR(8)
+age		INT
+ses		VARCHAR(2)
+grade	INT
+title		TEXT
