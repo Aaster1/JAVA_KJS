@@ -33,7 +33,7 @@ public class Front {
 		System.out.println();
 		System.out.println("===================================================================================================================");
 		System.out.println();
-		System.out.print(" 입력>> ");
+		System.out.print(" \t입력>> ");
 
 	}
 	static void anyKey() {
@@ -47,7 +47,7 @@ public class Front {
 		System.out.println();
 		System.out.println("===================================================================================================================");
 		System.out.println();
-		System.out.println("\t팀 배정 시스템을 종료합니다.");
+		System.out.println("\t팀 시스템을 종료합니다.");
 		System.out.println();
 		System.out.println("===================================================================================================================");
 		System.out.println();
@@ -116,7 +116,7 @@ public class Front {
 		
 	}
 	
-	static int selectTeam() {
+	static int selectTeam() throws InputMismatchException{
 		System.out.println();
 		System.out.println("===================================================================================================================");
 		System.out.println();
@@ -201,7 +201,7 @@ public class Front {
 
 	}
 	
-	static void assignTeam() {
+	static void assignTeam() throws InputMismatchException{
 		nonAssign.clear();
 		nonAssign.addAll(cts.personList(5));
 
@@ -243,7 +243,7 @@ public class Front {
 		
 	}
 	
-	static void setGrade() {
+	static void setGrade() throws InputMismatchException{
 		int N = selectTeam();
 		System.out.println();
 		System.out.println("===================================================================================================================");
@@ -252,7 +252,7 @@ public class Front {
 		System.out.println();
 		System.out.println("===================================================================================================================");
 		System.out.println();
-		System.out.print("입력>>");
+		System.out.print("\t입력>>");
 		int sN = sc.nextInt();
 		sc.nextLine();
 		System.out.println();
@@ -285,7 +285,15 @@ public class Front {
 		}
 	}
 	
-	static void initializeAll() {
+	static void initializeAll() throws InputMismatchException{
+		System.out.println();
+		System.out.println("===================================================================================================================");
+		System.out.println();
+		System.out.println("\t정말로 데이터베이스 초기화를 진행하시겠습니까? ( Y / N )");
+		System.out.println();
+		System.out.println("\t입력>>");
+		String initializeConfirm = sc.next();
+		if(initializeConfirm.toUpperCase().equals("Y")){
 		boolean result = cts.initialize();
 		if(result) {
 			System.out.println();
@@ -305,16 +313,39 @@ public class Front {
 			System.out.println();
 
 		}
+	} else if (initializeConfirm.toUpperCase().equals("N")) {
+		System.out.println();
+		System.out.println("===================================================================================================================");
+		System.out.println();
+		System.out.println("\t데이터베이스 초기화를 중단합니다.");
+		System.out.println();
+		System.out.println("===================================================================================================================");
+		System.out.println();
+		
+	} else {
+		wrong();
+	}
 	}
 	
 	static void createPerson() {
 		boolean on =true;
+		boolean confirm2 = false;
 		System.out.println();
 		System.out.println("================ 인원 등록 ===================================================================================================");
+		System.out.println();
+		System.out.println();
+		System.out.println("\t신규 인원 등록을 진행하시겠습니까? (Y / N )");
+		System.out.println();
+		System.out.println("\t입력>>");
+		String confirm = sc.next();
+		if(confirm.toUpperCase().equals("Y")) {
+		System.out.println();
+		System.out.println("===================================================================================================================");
 		System.out.println();
 		String name = null, title=null,ses=null;
 		int age=0,grade=0;
 		do {
+			
 		try {
 			System.out.println();
 			System.out.print("\t이름>>");
@@ -343,7 +374,7 @@ public class Front {
 			System.out.println("\t 위 내용으로 확정하시겠습니까? (Y/N)");
 			try {
 				String answer = sc.next();
-				if(answer.equals("Y")) {
+				if(answer.toUpperCase().equals("Y")) {
 					System.out.println();
 					System.out.println("===================================================================================================================");
 					System.out.println();
@@ -351,7 +382,8 @@ public class Front {
 					System.out.println();
 					System.out.println("===================================================================================================================");
 					on= false;
-				}else if (answer.equals("N")) {
+					confirm2 = true;
+				}else if (answer.toUpperCase().equals("N")) {
 					System.out.println();
 					System.out.println("===================================================================================================================");
 					System.out.println();
@@ -379,7 +411,7 @@ public class Front {
 		person.setGrade(grade);
 		person.setTitle(title);
 		boolean result = css.createPerson(person);
-		if(result) {
+		if(result&&confirm2) {
 			System.out.println();
 			System.out.println("===================================================================================================================");
 			System.out.println();
@@ -392,11 +424,17 @@ public class Front {
 			System.out.println();
 			System.out.println("===================================================================================================================");
 			System.out.println();
-			System.out.println("\t인원 등록에 실패하였습니다.");
+			if(confirm2)
+				System.out.println("\t인원 등록에 실패하였습니다.");
+			else if(!confirm2)
+				System.out.println("\t인원 등록이 중단되었습니다.");
 			System.out.println();
 			System.out.println("===================================================================================================================");
 			System.out.println();
 
+		}
+		}else {
+			
 		}
 	}
 	
@@ -405,6 +443,8 @@ public class Front {
 
 		boolean on = true;
 		do {
+			try {
+				
 			menu();
 			int N = sc.nextInt();
 			sc.nextLine();
@@ -438,6 +478,10 @@ public class Front {
 			default:
 				wrong();
 				break;
+			}
+			} catch (InputMismatchException e) {
+				e.printStackTrace();
+				continue;
 			}
 		}while(on);
 		
