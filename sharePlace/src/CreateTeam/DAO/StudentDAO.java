@@ -12,7 +12,7 @@ public class StudentDAO extends JDBConnection{
 		public ArrayList<Person> importTeam(int team){
 			ArrayList<Person> personList = new ArrayList<>();
 			
-			String sql = "SELECT * " + " FROM esd.team?";
+			String sql = "SELECT * " + " FROM aster.team?";
 			try {
 				psmt = con.prepareStatement(sql);
 				psmt.setInt(1, team);
@@ -40,7 +40,7 @@ public class StudentDAO extends JDBConnection{
 		public Person assign(int studentN) {
 			Person person = new Person();
 			
-			String sql = "SELECT * " + "FROM esd.team5 " + "WHERE no = ?";
+			String sql = "SELECT * " + "FROM aster.team5 " + "WHERE no = ?";
 			try {
 				psmt = con.prepareStatement(sql);
 				psmt.setInt(1, studentN);
@@ -64,7 +64,7 @@ public class StudentDAO extends JDBConnection{
 		public boolean setGrade(int teamN,int studentN,int grade) {
 			int result = 0;
 			
-			String sql = "UPDATE esd.team? " + "SET grade = ? " + "WHERE no = ?";
+			String sql = "UPDATE aster.team? " + "SET grade = ? " + "WHERE no = ?";
 			try {
 				psmt = con.prepareStatement(sql);
 				psmt.setInt(1, teamN);
@@ -81,7 +81,7 @@ public class StudentDAO extends JDBConnection{
 		}
 		public boolean assign2(Person result, int teamN) {
 			int result2 = 0;
-			String sql = "INSERT INTO esd.team? " + " (no,name,age,ses,grade,title) VALUES ( ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO aster.team? " + " (no,name,age,ses,grade,title) VALUES ( ?, ?, ?, ?, ?, ?)";
 			try {
 				psmt = con.prepareStatement(sql);
 				psmt.setInt(1,teamN);
@@ -103,12 +103,12 @@ public class StudentDAO extends JDBConnection{
 		
 		public boolean initialize() {
 			
-					String sql = " DELETE FROM esd.team1; ";
-					String sql2 = " DELETE FROM esd.team2; ";
-					String sql3 = " DELETE FROM esd.team3; ";
-					String sql4 = " DELETE FROM esd.team4; ";
-					String sql5 = " DELETE FROM esd.team5; ";
-					String sql6 = "INSERT INTO esd.team5(no,name,age,ses,grade,title) VALUES(1,'강진수',29,'남',0,'강아지')"
+					String sql = " DELETE FROM aster.team1; ";
+					String sql2 = " DELETE FROM aster.team2; ";
+					String sql3 = " DELETE FROM aster.team3; ";
+					String sql4 = " DELETE FROM aster.team4; ";
+					String sql5 = " DELETE FROM aster.team5; ";
+					String sql6 = "INSERT INTO aster.team5(no,name,age,ses,grade,title) VALUES(1,'강진수',29,'남',0,'강아지')"
 							+", (2,'구교찬',24,'남',0,'없음')"
 							+", (3,'김수빈',26,'여',0,'없음')"
 							+", (4,'김준혁',24,'남',0,'없음')"
@@ -137,7 +137,7 @@ public class StudentDAO extends JDBConnection{
 		}
 		
 		public void delete(int studentN) {
-			String sql = " DELETE FROM esd.team5 WHERE no = ? ";
+			String sql = " DELETE FROM aster.team5 WHERE no = ? ";
 			
 			try {
 				psmt = con.prepareStatement(sql);
