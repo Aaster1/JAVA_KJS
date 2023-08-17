@@ -64,7 +64,7 @@ public class NoGeneric {
 		product1.setCloth(new Cloth());
 		System.out.println(product1.getCloth());
 		
-		product2 product2 = new Croduct2();
+		Product2 product2 = new Product2();
 		product2.setComputer(new Computer());
 		System.out.println(product2.getComputer());
 		
