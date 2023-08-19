@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UpdCon">
+   <children>
+      <Button layoutX="17.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButton" text="처음으로" />
+      <Label layoutX="25.0" layoutY="84.0" text="제목 : ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="updContent" layoutX="80.0" layoutY="138.0" prefHeight="244.0" prefWidth="413.0" />
+      <TextField fx:id="updTitle" layoutX="80.0" layoutY="83.0" />
+      <Label layoutX="7.0" layoutY="113.0" text="작성자 : ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="138.0" text="내용 : ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="updWriter" layoutX="80.0" layoutY="112.0" />
+      <Label layoutX="240.0" layoutY="35.0" text="글 수정">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Button layoutX="518.0" layoutY="361.0" mnemonicParsing="false" onAction="#confirm" text="완료" />
+   </children>
+</AnchorPane>

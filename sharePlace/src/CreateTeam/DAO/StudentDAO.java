@@ -12,7 +12,7 @@ public class StudentDAO extends JDBConnection{
 		public ArrayList<Person> importTeam(int team){
 			ArrayList<Person> personList = new ArrayList<>();
 			
-			String sql = "SELECT * " + " FROM aster.team?";
+			String sql = "SELECT * " + " FROM esd.team?";
 			try {
 				psmt = con.prepareStatement(sql);
 				psmt.setInt(1, team);

@@ -1,0 +1,19 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+#colNo{
+	-fx-alignment: "CENTER";
+}
+#colTitle{
+	-fx-alignment: "CENTER";
+}
+#colWriter{
+	-fx-alignment: "CENTER";
+}
+#colReg{
+	-fx-alignment: "CENTER";
+	-fx-font-size: 10;
+}
+#colUpd{
+	-fx-alignment: "CENTER";
+	-fx-font-size: 10;
+}
