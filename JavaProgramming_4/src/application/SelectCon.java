@@ -77,7 +77,7 @@ public class SelectCon {
 			
 //			이 부분이 컨트롤러와 접촉하는 부분입니다.
 			UpdCon updCon = loader.getController();		//<-접촉
-			updCon.tempBoardNo = tempBoardNo;			//<-BoardNo 그대로 updCon 컨트롤러클래스의 매개변수로 전달
+			updCon.tempBoardNo = tempBoardNo;			//<-BoardNo 그대로 updCon 컨트롤러클래스의 멤버변수로 전달
 			updCon.setting(board);						//<-setting()이라는 이름으로 정의된 메소드를 호출하여 매개변수를 담기
 			
 //			신 전환!
